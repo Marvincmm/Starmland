@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>进制转换 · Starmland 工具箱</title>
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<div class="stars"></div>
+
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="../index.html">⭐ Starmland</a>
+    <div class="nav-links">
+      <a href="../index.html">首页</a>
+      <a href="index.html" class="active">工具</a>
+      <a href="../skills.html">AI Skills</a>
+    </div>
+  </div>
+</nav>
+
+<main class="tool-wrap">
+  <h1>🔢 进制转换</h1>
+  <p class="desc">输入一个整数，同时显示二 / 八 / 十 / 十六进制结果（支持负数）。</p>
+  <div style="display:flex; gap:12px; flex-wrap:wrap;">
+    <select id="base" style="width:140px;">
+      <option value="2">二进制</option>
+      <option value="8">八进制</option>
+      <option value="10" selected>十进制</option>
+      <option value="16">十六进制</option>
+    </select>
+    <input type="text" id="num" placeholder="输入数值，如 255 或 0xFF" style="flex:1; min-width:200px;">
+    <button class="btn" onclick="convert()" style="width:auto;">转换</button>
+  </div>
+  <div class="result-box" id="out" style="display:none;"></div>
+</main>
+
+<script>
+function convert() {
+  const base = parseInt(document.getElementById('base').value, 10);
+  const raw = document.getElementById('num').value.trim();
+  const out = document.getElementById('out');
+  if (!raw) { out.style.display = 'block'; out.textContent = '请输入数值'; return; }
+  try {
+    const big = BigInt((base === 16 && /^0x/i.test(raw)) ? raw : (base === 2 && /^0b/i.test(raw)) ? raw : (base === 8 && /^0o/i.test(raw)) ? raw : parseInt(raw, base));
+    if (isNaN(Number(bigToNumberSafe(big))) ) throw new Error('x');
+    const lines = [
+      ['二进制', '2'], ['八进制', '8'], ['十进制', '10'], ['十六进制', '16']
+    ].map(([label, b]) => label + '：' + big.toString(parseInt(b, 10)).toUpperCase()).join('\n');
+    out.style.display = 'block';
+    out.textContent = lines;
+  } catch (e) {
+    out.style.display = 'block';
+    out.textContent = '✗ 无法按所选进制解析，请检查输入';
+  }
+}
+function bigToNumberSafe(b) { try { return Number(b); } catch (e) { return NaN; } }
+</script>
+</body>
+</html>
