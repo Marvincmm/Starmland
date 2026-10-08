@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Skills · Starmland</title>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div class="stars"></div>
+
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="index.html">⭐ Starmland</a>
+    <div class="nav-links">
+      <a href="index.html">首页</a>
+      <a href="tools/index.html">工具</a>
+      <a href="skills.html" class="active">AI Skills</a>
+      <a href="https://github.com/Marvincmm" target="_blank">GitHub</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" style="padding:60px 20px 30px;">
+  <h1>🤖 AI Agent Skills</h1>
+  <p>标准 SKILL.md 格式的技能集合，可被 Claude / TuriX 等 AI Agent 加载使用。</p>
+</header>
+
+<main class="container">
+  <section>
+    <div class="section-title">已收录 Skills</div>
+    <p class="section-sub">点击卡片查看源文件；新增 Skill 请在仓库 skills/ 目录下新建文件夹。</p>
+    <div class="grid" id="skill-grid">
+      <a class="card" href="https://github.com/Marvincmm/Starmland/tree/main/skills/example-skill" target="_blank">
+        <div class="icon">📘</div>
+        <h3>example-skill</h3>
+        <p>示例 Skill：演示 SKILL.md 的标准结构（元信息 + 触发条件 + 工作流程）。</p>
+      </a>
+      <div class="card" style="opacity:0.6;">
+        <div class="icon">➕</div>
+        <h3>等待你的新 Skill</h3>
+        <p>把 SKILL.md 放进 skills/你的技能名/ 目录，然后在此登记。</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-title">什么是 Skill？</div>
+    <div class="card" style="max-width:720px;">
+      <p>Skill 是一种给 AI Agent 的"说明书"：用 Markdown 写清这个技能做什么、什么时候触发、按什么步骤执行。Agent 在需要时读取对应 SKILL.md，即可按规范完成任务。</p>
+      <p style="margin-top:12px; color:var(--text-dim);">📄 格式规范见仓库 <a href="https://github.com/Marvincmm/Starmland/blob/main/skills/README.md" target="_blank" style="color:var(--accent2);">skills/README.md</a></p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>⭐ Starmland · 由 <a href="https://github.com/Marvincmm" target="_blank">Marvincmm</a> 构建 · Powered by GitHub Pages</p>
+</footer>
+</body>
+</html>
